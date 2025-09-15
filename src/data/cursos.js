@@ -108,7 +108,7 @@ const cursos = [
   {
   id: 'web',
   nombre: 'Introducción al desarrollo de páginas web',
-  description: 'Aprender los principios sobre cómo desarrollar buenas páginas que no solo sean robustaz sino que sigan principios fundamentales',
+  description: 'Aprender los principios sobre cómo desarrollar buenas páginas con principios y fundamentos',
   image: PaginasWebImg,
   items: [
     {

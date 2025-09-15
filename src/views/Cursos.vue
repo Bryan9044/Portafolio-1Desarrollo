@@ -1,6 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import cursos from '@/data/cursos.js';
+import Cartucho from '@/assets/Cartucho.png'
 
 const route = useRoute();
 const curso = cursos.find(c => c.id === route.params.id);
@@ -17,25 +18,34 @@ const curso = cursos.find(c => c.id === route.params.id);
     </div>
 
     <section class="evaluaciones">
-    <h3>Evaluaciones del curso</h3>
-    <div class="items-grid"> 
-      <section v-for="(item, index) in curso.items" :key="index" class="item-card">
-        <h4>{{ item.title }}</h4>
-        <p>{{ item.description }}</p>
-        <p><strong>Tipo:</strong> {{ item.typeEvaluation }}</p>
-        <p><strong>Entrega:</strong> {{ item.deliveryDate }}</p>
-        <p><strong>Tecnologías:</strong> {{ item.technologiesInvolved }}</p>
-        <a :href="item.linkRepo">Repositorio</a> |
-        <a :href="item.linkDeploy">Deploy</a>
-      </section>
-    </div>
+      <h3>Evaluaciones del curso</h3>
+      <div class="items-grid"> 
+        <section 
+          v-for="(item, index) in curso.items" 
+          :key="index" 
+          class="item-card"
+        >
+          <div class="image-container">
+            <img :src="Cartucho" alt="Cartucho" class="cartucho-img" />
+          </div>
+          <div class="item-content">
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.description }}</p>
+            <p><strong>Tipo:</strong> {{ item.typeEvaluation }}</p>
+            <p><strong>Entrega:</strong> {{ item.deliveryDate }}</p>
+            <p><strong>Tecnologías:</strong> {{ item.technologiesInvolved }}</p>
+            <a :href="item.linkRepo">Repositorio</a> |
+            <a :href="item.linkDeploy">Deploy</a>
+          </div>
+        </section>
+      </div>
     </section>
   </section>
 
   <p v-else>Curso no encontrado</p>
   <RouterLink to="/" class="volver-btn">← Volver al inicio</RouterLink>
-
 </template>
+
 
 <style scoped>
 
@@ -53,6 +63,14 @@ const curso = cursos.find(c => c.id === route.params.id);
 .volver-btn:hover {
   background-color: #c49ac4;
 }
+
+.evaluaciones {
+  width: 100%;
+  margin: 0 auto; /* centrado */
+  padding: 0 20px;
+}
+
+
 
 .curso-container {
   position: relative;
@@ -76,7 +94,7 @@ const curso = cursos.find(c => c.id === route.params.id);
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 12px;
 }
@@ -89,7 +107,7 @@ const curso = cursos.find(c => c.id === route.params.id);
 }
 
 .curso-overlay p {
-  color: white;        
+  color: rgb(0, 0, 0);        
   font-size: 0.9rem;
   width: 48%;
   max-width: 100%;
@@ -97,51 +115,105 @@ const curso = cursos.find(c => c.id === route.params.id);
 
 .items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; /* Más espacio para el glow */
 }
+
+
+
 
 .item-card {
   position: relative;
-  background-color: #fff;
-  padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  color: #ececec;
-}
-.item-card > * {
-  position: relative; 
-  z-index: 1;          
-}
-
-
-.item-card::before{
-  content: '';
-  position: absolute;
-  background-image: linear-gradient(180deg,rgb(0, 183, 255), rgb(255, 48, 255));
-  width: 200%;
-  height: 200%;
-  animation: rotBGimg 8s linear infinite;
-  transition: all 0.3s linear;
+  overflow: visible; /* Esto elimina el recuadro blanco */
+  width: 100%;
+  height: auto;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* Agregamos margen para que el glow no se corte */
+  margin: 20px;
 }
 
-@keyframes rotBGimg {
-  from {
-    transform: rotate(0deg);
-  } 
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+.cartucho-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  background: transparent;
+  border: none;
+  outline: none;
   
+  /* Usar clip-path para controlar la forma sin afectar el glow */
+  clip-path: inset(0 round 12px);
+  
+
+  animation: glowPulse 2s infinite;
 }
 
-.item-card::after{
-  content: "";
-  position: absolute;
-  background: #0a1f3d;
-  inset: 5px;
-  border-radius: 15px;
+
+
+
+.item-card:hover .cartucho-img {
+  transform: scale(1.05);
+  /* Solo intensificar el filter */
+  filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.8));
+  border-radius: 12px;
 }
+
+/* Contenido encima de la imagen */
+.item-content {
+  position: absolute;
+  top: 34%;
+  left: 39%;
+  transform: translateY(-50%);
+  width: 40%;
+  padding: 12px;
+  color: #fff;
+  border-radius: 8px;
+  z-index: 1;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  /* Asegurar que el contenido no tenga fondo */
+  background: transparent;
+}
+
+
+.item-content p {
+  font-size: 12px;
+}
+
+
+.item-content a {
+  font-size: 12px;
+  color: rgb(69, 69, 69);
+}
+
+/*  
+@media (max-width: 1024px) {
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);;
+  }
+}
+
+@media (max-width: 767px) {
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+¨*/
+
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px rgba(255,0,255,0.4); }
+  50% { box-shadow: 0 0 25px rgba(255,0,255,0.8); }
+  100% { box-shadow: 0 0 10px rgba(255,0,255,0.4); }
+}
+
+
 </style>

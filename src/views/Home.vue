@@ -55,43 +55,44 @@ import { RouterLink } from 'vue-router';
 
 .cursos-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* dos columnas */
-  grid-template-rows: 1fr 1fr;    /* dos filas */
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 10px;
 }
 
-/* Primer curso: arriba izquierda */
-.cursos-grid a:nth-child(1) {
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-}
-
-/* Segundo curso: abajo derecha */
+/* Eliminamos las posiciones forzadas de nth-child */
+.cursos-grid a:nth-child(1),
 .cursos-grid a:nth-child(2) {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .curso-box {
   position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 0; /* quita bordes redondeados */
+  overflow: visible; /* permite que la imagen se muestre normalmente */
+  box-shadow: none; /* quita sombras */
+  transition: none; /* quita animaciones */
 }
 
-.curso-box:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-}
+
 
 .curso-img {
-  width: 100%;
-  height: auto;  /* Mantiene proporción */
+  width: 100%;      /* llena toda la caja */
+  height: auto;
   display: block;
+  object-fit: cover; /* mantiene proporción y recorta si hace falta */
+  border-radius: 0;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
+
+
+
+
+.curso-box:hover .curso-img {
+  transform: scale(1.05);
+  filter: brightness(0.8);
+}
+
 
 .curso-overlay {
   position: absolute;
@@ -105,21 +106,21 @@ import { RouterLink } from 'vue-router';
   padding: 10px;
 }
 
-.curso-box:hover { transform: scale(1.02); box-shadow: 0 6px 16px rgba(0,0,0,0.25); }
+.curso-box:hover { transform: none; box-shadow: none; }
 
 
 
 
 .curso-overlay h3 {
   color: rgb(255, 235, 226);       
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   max-width: 100%;
   width: 40%;
 }
 
 .curso-overlay p {
   color: white;        
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   width: 40%;
   max-width: 100%;
 }
