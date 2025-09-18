@@ -83,24 +83,24 @@ ul { list-style: none; }
 .footer-col .social-links a:hover { color: #24262b; background-color: #ffffff; }
 
 #navigation {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
 }
+
 .header {
   background-color: #4a636c;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 85px;
-  padding: 5px 10%;
+  padding: 5px 2rem;
 }
 .nav-links{
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
+  flex: 1;
+  justify-content: space-evenly;
 }
 
 .header .nav-links li{
