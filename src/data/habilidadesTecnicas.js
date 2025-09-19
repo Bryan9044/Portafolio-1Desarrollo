@@ -1,91 +1,84 @@
-import PaginasWebImg from '@/assets/Consola.png'
 
 const habilidades = [
   {
     id: 'frontend1',
     categoria: 'Frontend',
     nombre: 'CSS',
-    progreso: 70, // porcentaje de dominio
-    image: PaginasWebImg
+    progreso: 55,
   },
   {
     id: 'frontend2',
     categoria: 'Frontend',
     nombre: 'HTML',
     progreso: 70,
-    image: PaginasWebImg
+  },
+  {
+    id: 'frontend3',
+    categoria: 'Frontend',
+    nombre: 'Javascript',
+    progreso: 45,
   },
   {
     id: 'backend1',
     categoria: 'Backend',
     nombre: 'Python',
     progreso: 65,
-    image: PaginasWebImg
   },
   {
     id: 'backend2',
     categoria: 'Backend',
     nombre: 'C',
     progreso: 50,
-    image: PaginasWebImg
   },
   {
     id: 'backend3',
     categoria: 'Backend',
     nombre: 'C++',
     progreso: 50,
-    image: PaginasWebImg
   },
   {
     id: 'backend4',
-    categoria: 'Java',
+    categoria: 'Backend',
     nombre: 'C',
     progreso: 50,
-    image: PaginasWebImg
-  },
-  {
-    id: 'backend5',
-    categoria: 'Backend',
-    nombre: 'Haskell',
-    progreso: 20,
-    image: PaginasWebImg
   },
   {
     id: 'framework1',
-    categoria: 'Framework',
+    categoria: 'Frameworks',
     nombre: 'React',
     progreso: 40,
-    image: PaginasWebImg
   },
   {
     id: 'framework2',
-    categoria: 'Framework',
+    categoria: 'Frameworks',
     nombre: 'Vue',
     progreso: 40,
-    image: PaginasWebImg
   },
   {
     id: 'basesDatos1',
-    categoria: 'BasesDatos',
+    categoria: 'Bases de datos',
     nombre: 'SQLServer',
     progreso: 70,
-    image: PaginasWebImg
   },
   {
     id: 'basesDatos2',
-    categoria: 'BasesDatos',
+    categoria: 'Bases de datos',
     nombre: 'MySQL',
     progreso: 70,
-    image: PaginasWebImg
   },
   {
     id: 'controlVersiones1',
-    categoria: 'ControlVersiones',
+    categoria: 'Control de versiones',
     nombre: 'Github',
     progreso: 70,
-    image: PaginasWebImg
+  },
+  {
+    id: 'controlVersiones2',
+    categoria: 'Control de versiones',
+    nombre: 'Git',
+    progreso: 70,
   }      
 ]
 
 
-export default cursos
+export default habilidades
