@@ -113,13 +113,50 @@ const cursos = [
   items: [
     {
       title: 'Laboratorio 1',
-      description: 'Implementar un formulario web',
+      description: 'Investigación markdown',
       typeEvaluation: 'Laboratorio',
-      deliveryDate: '28/8/2025',
+      deliveryDate: '10/8/2025',
+      technologiesInvolved: 'Netlify',
+      linkRepo: '#',
+      linkDeploy: '#'
+    },
+    {
+      title: 'Laboratorio 2',
+      description: 'Estructura y semántica',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '16/8/2025',
       technologiesInvolved: 'HTML',
       linkRepo: '#',
       linkDeploy: '#'
     },
+    {
+      title: 'Laboratorio 3',
+      description: 'Embellecer lab2',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '25/8/2025',
+      technologiesInvolved: 'HTML y CSS',
+      linkRepo: '#',
+      linkDeploy: '#'
+    },
+    {
+      title: 'Laboratorio 4',
+      description: 'Responder preguntas',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '29/8/2025',
+      technologiesInvolved: 'TXT',
+      linkRepo: '#',
+      linkDeploy: '#'
+    },
+    {
+      title: 'Laboratorio 5',
+      description: 'Pulido responsive',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '07/9/2025',
+      technologiesInvolved: 'TXT',
+      linkRepo: '#',
+      linkDeploy: '#'
+    },
+    
     {
       title: 'Quizz 1',
       description: 'Preguntas de HTML y CSS',

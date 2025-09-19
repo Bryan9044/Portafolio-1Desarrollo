@@ -1,11 +1,36 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import { useRoute } from 'vue-router'
+import logoProgramador from '@/assets/iconoProgramador.png'
+import { ref, watch  } from 'vue'
+
+
+const isMenuOpen = ref(false)
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const route = useRoute()
+watch(() => route.fullPath, () => {
+  isMenuOpen.value = false
+})
 </script>
 
 <template>
   <header class="header">
     <nav id="navigation">
-      <ul class="nav-links">  
+      <img :src="logoProgramador" alt="icono de un programador" class="logo-header" />
+     <button 
+        class="hamburger-btn" 
+        :class="{ 'active': isMenuOpen }"
+        @click="toggleMenu"
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul :class="['nav-links', { 'nav-open': isMenuOpen }]">  
         <li><RouterLink to="/">Inicio</RouterLink></li>
         <li><RouterLink to="/sobre-mi">Sobre mí</RouterLink></li>
         <li><RouterLink to="/proyectos">Proyectos</RouterLink></li>
@@ -85,9 +110,10 @@ ul { list-style: none; }
 #navigation {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .header {
@@ -97,62 +123,97 @@ ul { list-style: none; }
   align-items: center;
   height: 85px;
   padding: 5px 2rem;
-}
-.nav-links{
-  flex: 1;
-  justify-content: space-evenly;
+  position: relative;
 }
 
-.header .nav-links li{
+/* Botón hamburguesa */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger-btn span {
+  width: 100%;
+  height: 3px;
+  background-color: #eceff1;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Navegación */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
   display: inline-block;
-  padding: 0 20px;
 }
 
-.header .nav-links:hover{
-  transform: scale(1.1);
-
-}
-
-.header .nav-links a{
+.nav-links a {
   font-weight: 700;
   color: #eceff1;
-  text-decoration: none;}
-
-.header .nav-links li a:hover{
-  color: #ffbc0e;
-
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+.nav-links a:hover {
+  color: #ffbc0e;
+}
 
-
-.switch{
-  height: 50px;
+/* Switch efecto */
+.switch {
+  height: clamp(40px, 6vw, 50px);
   background-image: linear-gradient(to top, #cff8f7 0%, #5d4b69 100%);
-  padding: 0 1.5rem;
+  padding: 0 clamp(1rem, 2vw, 1.5rem);
   border-radius: 0.8rem;
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-
-.switch .input{
-display: none;
+.switch .input {
+  display: none;
 }
 
-.switch .rail{
-position: relative;
-height: 30px;
-width: 90px;
-background-color: #ffffff;
-border-radius: 3rem;
+.switch .rail {
+  position: relative;
+  height: clamp(24px, 4vw, 30px);
+  width: clamp(70px, 12vw, 90px);
+  background-color: #ffffff;
+  border-radius: 3rem;
+  transition: all 0.3s ease;
 }
 
 .switch .rail .circle {
   display: block;
-  width: 36px;
-  height: 36px;
-  background: radial-gradient(circle at 30% 30%,  #f5f5f5 0%, #d9d9d9 70%, #a6a6a6 100%);
+  width: clamp(28px, 5vw, 36px);
+  height: clamp(28px, 5vw, 36px);
+  background: radial-gradient(circle at 30% 30%, #f5f5f5 0%, #d9d9d9 70%, #a6a6a6 100%);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -162,29 +223,112 @@ border-radius: 3rem;
   box-shadow: 0 0 8px #d9d9d9;
 }
 
-
-
-.switch .indicator{
-width: 15px;
-height: 15px;
-background-color: #fff;
-border-radius: 50%;
-margin-left: 1.5rem;
-transition: 0.4s;
+.switch .indicator {
+  width: clamp(12px, 2vw, 15px);
+  height: clamp(12px, 2vw, 15px);
+  background-color: #fff;
+  border-radius: 50%;
+  margin-left: clamp(1rem, 2vw, 1.5rem);
+  transition: 0.4s;
 }
 
-
-.switch .input:checked ~ .rail .circle{
-background-image:linear-gradient(to right, #fffacd 0%,#ffe066 40%, #ffb347 70%, #ff7e5f 100%);
-transform: translate(54px, -50%);
-box-shadow: 0 0 10px #ffec99, 0 0 25px #ffe066, 0 0 40px #ffb347;
+.switch .input:checked ~ .rail .circle {
+  background-image: linear-gradient(to right, #fffacd 0%, #ffe066 40%, #ffb347 70%, #ff7e5f 100%);
+  transform: translate(clamp(42px, 7vw, 54px), -50%);
+  box-shadow: 0 0 10px #ffec99, 0 0 25px #ffe066, 0 0 40px #ffb347;
 }
 
-
-.switch .input:checked ~ .indicator{
+.switch .input:checked ~ .indicator {
   background-color: #43e97b;
+}
+
+.logo-header {
+  width: clamp(40px, 5vw, 80px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* celular */
+@media (max-width: 480px) {
+  .hamburger-btn {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    background-color: #4a636c;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.nav-open {
+    right: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(236, 239, 241, 0.1);
+  }
+
+  .switch {
+    position: absolute;
+    top: 50%;
+    right: 4rem;
+    transform: translateY(-50%) scale(0.9);
+  }
+
+  .header {
+    height: auto;
+    padding: 1rem 2rem;
+  }
+
+  .logo-header {
+    display: none;
+  }
+  
+
 
 }
-/* Responsive */
 
+
+
+/* Tablet*/
+@media (min-width: 769px) and (max-width: 1023px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .logo-header {
+    width: 60px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .nav-links {
+    gap: 24px;
+  }
+
+  .logo-header {
+    width: 70px;
+  }
+}
 </style>

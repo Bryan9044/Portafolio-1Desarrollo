@@ -1,11 +1,53 @@
 <script setup>
 import { useRoute } from 'vue-router';
+import { ref, computed } from 'vue';
 import cursos from '@/data/cursos.js';
-import Cartucho from '@/assets/Cartucho.png'
+import Cartucho from '@/assets/Cartucho.png';
 
 const route = useRoute();
+
 const curso = cursos.find(c => c.id === route.params.id);
+
+const filtroTipo = ref('');
+const filtroTecnologia = ref('');
+const filtroFecha = ref('');
+
+const cursosFiltrados = computed(() => {
+  if (!curso) return [];
+  return curso.items.filter(item => {
+    const coincideTipo =
+      !filtroTipo.value || item.typeEvaluation === filtroTipo.value;
+
+    const tecnologiasArray = item.technologiesInvolved
+      .split(/,| y /)
+      .map(t => t.trim().toLowerCase());
+
+    const coincideTecnologia =
+      !filtroTecnologia.value ||
+      tecnologiasArray.includes(filtroTecnologia.value.toLowerCase());
+
+    const coincideFecha =
+      !filtroFecha.value || item.deliveryDate.includes(filtroFecha.value);
+
+    return coincideTipo && coincideTecnologia && coincideFecha;
+  });
+});
+
+const tiposDisponibles = curso
+  ? [...new Set(curso.items.map(i => i.typeEvaluation))]
+  : [];
+
+const cursoTecDisponibles = curso
+  ? [
+      ...new Set(
+        curso.items.flatMap(i =>
+          i.technologiesInvolved.split(/,| y /).map(t => t.trim())
+        )
+      )
+    ]
+  : [];
 </script>
+
 
 <template>
   <section v-if="curso" class="SectionCursos">
@@ -17,11 +59,38 @@ const curso = cursos.find(c => c.id === route.params.id);
       </div>
     </div>
 
+    <div class="filtros">
+      <label>
+        Tipo de evaluación:
+        <select v-model="filtroTipo">
+          <option value="">Todos</option>
+          <option v-for="tipo in tiposDisponibles" :key="tipo" :value="tipo">
+            {{ tipo }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Tecnología:
+        <select v-model="filtroTecnologia">
+          <option value="">Todas</option>
+          <option v-for="tec in cursoTecDisponibles" :key="tec" :value="tec">
+            {{ tec }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Fecha (dd/mm/yyyy, mes o año):
+        <input type="text" v-model="filtroFecha" placeholder="Ej: 08/2025 o 2025" />
+      </label>
+    </div>
+
     <section class="evaluaciones">
       <h3>Evaluaciones del curso</h3>
       <div class="items-grid"> 
         <section 
-          v-for="(item, index) in curso.items" 
+          v-for="(item, index) in cursosFiltrados" 
           :key="index" 
           class="item-card"
         >
@@ -30,46 +99,71 @@ const curso = cursos.find(c => c.id === route.params.id);
           </div>
           <div class="item-content">
             <h4>{{ item.title }}</h4>
-            <p>{{ item.description }}</p>
-            <p><strong>Tipo:</strong> {{ item.typeEvaluation }}</p>
-            <p><strong>Entrega:</strong> {{ item.deliveryDate }}</p>
-            <p><strong>Tecnologías:</strong> {{ item.technologiesInvolved }}</p>
-            <a :href="item.linkRepo">Repositorio</a> |
-            <a :href="item.linkDeploy">Deploy</a>
+            <p class="pr">{{ item.description }}</p>
+            <p class="pr"><strong>Tipo:</strong> {{ item.typeEvaluation }}</p>
+            <p class="pr"><strong>Entrega:</strong> {{ item.deliveryDate }}</p>
+            <p class="pr"><strong>Tecnologías:</strong> {{ item.technologiesInvolved }}</p>
+            <a :href="item.linkRepo" class="enlaces">Repositorio</a> 
+            <a :href="item.linkDeploy" class="enlaces">Deploy</a>
           </div>
         </section>
       </div>
     </section>
   </section>
-
-  <p v-else>Curso no encontrado</p>
-  <RouterLink to="/" class="volver-btn">← Volver al inicio</RouterLink>
 </template>
 
 
 <style scoped>
 
-.volver-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 8px 16px;
-  background-color: #d9b8da;
-  color: #000;
-  border-radius: 8px;
-  text-decoration: none;
+
+.SectionCursos {
+  background: linear-gradient(to bottom right, #e0f7fa, #fce4ec);
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+}
+
+.filtros {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.filtros label {
+  display: flex;
+  flex-direction: column;
   font-weight: bold;
-  transition: all 0.3s ease;
+  font-size: 0.9rem;
 }
-.volver-btn:hover {
-  background-color: #c49ac4;
+
+.filtros select,
+.filtros input {
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
 }
+
+
 
 .evaluaciones {
   width: 100%;
-  margin: 0 auto; /* centrado */
+  margin: 0 auto; 
   padding: 0 20px;
 }
 
+.evaluaciones h3 {
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-family: 'Courier New', monospace;
+  color: #6e5d5d;
+  text-shadow: 0 0 6px rgba(163, 158, 251, 0.6);
+  margin: 40px 0 20px;
+  letter-spacing: 1px;
+  position: relative;
+}
 
 
 .curso-container {
@@ -100,14 +194,14 @@ const curso = cursos.find(c => c.id === route.params.id);
 }
 
 .curso-overlay h2 {
-  color: rgb(255, 235, 226);       
+  color: rgb(255, 255, 255);       
   font-size: 1.4rem;
   max-width: 100%;
   width: 80%;
 }
 
 .curso-overlay p {
-  color: rgb(0, 0, 0);        
+  color: rgb(255, 255, 255);        
   font-size: 0.9rem;
   width: 48%;
   max-width: 100%;
@@ -116,7 +210,7 @@ const curso = cursos.find(c => c.id === route.params.id);
 .items-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px; /* Más espacio para el glow */
+  gap: 40px; 
 }
 
 
@@ -125,15 +219,12 @@ const curso = cursos.find(c => c.id === route.params.id);
 .item-card {
   position: relative;
   border-radius: 12px;
-  overflow: visible; /* Esto elimina el recuadro blanco */
+  overflow: hidden;
   width: 100%;
   height: auto;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  /* Agregamos margen para que el glow no se corte */
-  margin: 20px;
 }
+
+
 
 
 
@@ -142,77 +233,159 @@ const curso = cursos.find(c => c.id === route.params.id);
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
   object-fit: cover;
-  transition: transform 0.3s ease;
-  background: transparent;
-  border: none;
-  outline: none;
-  
-  /* Usar clip-path para controlar la forma sin afectar el glow */
-  clip-path: inset(0 round 12px);
-  
-
-  animation: glowPulse 2s infinite;
+  border-radius: 12px;
+  z-index: 0;
 }
+
 
 
 
 
 .item-card:hover .cartucho-img {
   transform: scale(1.05);
-  /* Solo intensificar el filter */
   filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.8));
   border-radius: 12px;
 }
 
-/* Contenido encima de la imagen */
 .item-content {
   position: absolute;
-  top: 34%;
-  left: 39%;
-  transform: translateY(-50%);
-  width: 40%;
-  padding: 12px;
-  color: #fff;
-  border-radius: 8px;
+  inset: 13% 20% 35% 40%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
   z-index: 1;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-  /* Asegurar que el contenido no tenga fondo */
-  background: transparent;
+
 }
 
 
-.item-content p {
-  font-size: 12px;
+.item-content h4 {
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
 }
 
-
+.item-content p,
 .item-content a {
-  font-size: 12px;
-  color: rgb(69, 69, 69);
+  font-size: clamp(0.85rem, 1.2vw, 0.8rem);
 }
 
-/*  
-@media (max-width: 1024px) {
-  .items-grid {
-    grid-template-columns: repeat(2, 1fr);;
-  }
-}
 
-@media (max-width: 767px) {
-  .items-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-¨*/
 
 
 @keyframes glowPulse {
   0% { box-shadow: 0 0 10px rgba(255,0,255,0.4); }
   50% { box-shadow: 0 0 25px rgba(255,0,255,0.8); }
   100% { box-shadow: 0 0 10px rgba(255,0,255,0.4); }
+}
+
+
+/* celular */
+@media (max-width: 480px) {
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .item-content {
+    inset: 13% 21% 35% 39%;
+  }
+  
+  .item-content h4 {
+    font-size: clamp(0.4rem, 2.5vw, 0.8rem);
+  }
+  
+  .item-content p,
+  .item-content a {
+    font-size: clamp(0.35rem, 2.5vw, 0.7rem);
+  }
+
+  .SectionCursos h2 {
+    font-size: 0.5rem;
+  }
+
+  .SectionCursos p {
+    font-size: 0.4rem;
+  }
+}
+
+/* Celular */
+@media (min-width: 481px) and (max-width: 688px) {
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item-content h4 {
+    font-size: 12px !important; /* Forzar con !important temporalmente */
+  }
+
+  .pr {
+    font-size: 8px !important; /* Era 1px, muy pequeño */
+  }
+
+  .SectionCursos h2 {
+    font-size: clamp(0.69rem, 2vw, 1.4rem) !important;
+    font-weight: bold;
+  }
+
+  .SectionCursos p {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 689px) and (max-width: 1023px) {
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .item-content h4 {
+    font-size: clamp(0.5rem, 1.2vw, 0.9rem);
+  }
+
+  .item-content p,
+  .item-content a {
+    font-size: clamp(0.45rem, 1vw, 0.75rem);
+  }
+
+  .SectionCursos h2 {
+    font-size: clamp(0.69rem, 2vw, 1.4rem);
+    font-weight: bold;
+  }
+
+  .SectionCursos p {
+    font-size: 0.7rem;
+  }
+}
+
+/*  desktop */
+@media (min-width: 1024px) {
+  .items-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .item-content {
+    inset: 13% 21% 35% 39%;
+  }
+  
+  .item-content h4 {
+    font-size: clamp(0.6rem, 0.9vw, 0.9rem);
+  }
+
+  .item-content p,
+  .item-content a {
+    font-size: clamp(0.60rem, 0.8vw, 0.75rem);
+  }
+  .SectionCursos h2 {
+    font-size: clamp(0.5rem, 2vw, 1rem);
+    font-weight: bold;
+  }
+
+  .SectionCursos p {
+    font-size: 0.8rem;
+  }
 }
 
 

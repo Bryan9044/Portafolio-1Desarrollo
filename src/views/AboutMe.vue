@@ -1,5 +1,5 @@
 <script setup>
-import FotoProfesional from '@/assets/FotoProfesional.jpeg'
+import FotoProfesional from '@/assets/FotoProfe.jpg'
 import { onMounted, reactive } from 'vue'
 import habilidades from '@/data/habilidadesTecnicas'
 import github from '@/assets/Github.png'
@@ -47,6 +47,17 @@ const categorias = habilidades.reduce((acc, item) => {
 }, {})
 
 
+
+  
+const descargarCV = () => {
+  const link = document.createElement('a');
+  link.href = '/BryanLondonoCV.pdf'; 
+  link.download = 'BryanLondonoCV.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+  
 
 
 </script>
@@ -106,6 +117,7 @@ const categorias = habilidades.reduce((acc, item) => {
                 </div>
             </article>
         </section>
+          <h2 class="habilidadesT">Habilidades Tecnicas</h2>
           <section class="column column--right">
             <article 
               v-for="(skills, categoria) in categorias" 
@@ -172,7 +184,6 @@ const categorias = habilidades.reduce((acc, item) => {
                     </a>
                   </div>
                   
-                  <!-- Efecto de brillo -->
                   <div class="cert-shine"></div>
                 </article>
               </div>
@@ -201,6 +212,10 @@ const categorias = habilidades.reduce((acc, item) => {
                 </div>
               </article>
             </section>
+            <h3 class="tituloCV">Mi Currículum</h3>
+            <button @click="descargarCV" class="botonB">
+              Descargar CV
+            </button>
 
         
 
@@ -242,6 +257,7 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
     max-width: 100%;
     height: auto;
     margin-bottom: 5%;
+    border-radius: 10%;
 }
 
 @keyframes cursor {
@@ -323,10 +339,10 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
 
 .column--right {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 2em;
   width: 70%;
-  justify-items: center; /* centra cada tarjeta en su celda */
+  justify-items: center; 
 }
 
 
@@ -380,7 +396,6 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   position: relative;
 }
 
-/* Ícono circular */
 .icono {
   width: 5em;
   height: 5em;
@@ -396,7 +411,6 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   transform: scale(1.05);
 }
 
-/* Contenedor invisible para el tooltip */
 .icon-label {
   position: relative;
   display: block;
@@ -404,7 +418,7 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   height: 0;
 }
 
-/* Tooltip flotante */
+/* Tooltip arriba */
 .icon-label::before {
   content: attr(data-social);
   position: absolute;
@@ -423,7 +437,7 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   z-index: 10;
 }
 
-/* Flechita decorativa */
+/* Flechita tooltip */
 .icon-label::after {
   content: '';
   position: absolute;
@@ -440,7 +454,7 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   z-index: 9;
 }
 
-/* Activación del tooltip al hacer hover sobre el ícono */
+
 .redes a:hover .icon-label::before,
 .redes a:hover .icon-label::after {
   opacity: 1;
@@ -454,7 +468,7 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
 }
 
 
-/* Apartado de certificaciones*/
+/* Certificaciones*/
 
 .certificaciones-section {
   width: 100%;
@@ -622,7 +636,6 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   transform: translateX(3px);
 }
 
-/* Efecto de brillo animado */
 .cert-shine {
   position: absolute;
   top: 0;
@@ -657,7 +670,6 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
   }
 }
 
-/* Animación de entrada */
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -715,5 +727,129 @@ background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
 
 .info-item:hover {
   transform: translateY(-5px);
+}
+
+.habilidadesT {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.botonB {
+  background: linear-gradient(135deg, #9ad6e6 0%, #17bd67 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.botonB:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.botonB:active {
+  transform: translateY(0);
+}
+
+.tituloCV {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .column--right {
+    grid-template-columns: repeat(2, 1fr);
+    width: 95%;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.2rem;
+  }
+  
+  .skills-bar {
+    height: 8px;
+  }
+
+  .tittle{
+    font-size: clamp(1rem, 5vw, 1.8rem);
+    margin-bottom: 1.5rem;
+    padding: 0 1rem; 
+  
+  }
+
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .column--right {
+    grid-template-columns: 1fr;
+    width: 95%;
+    gap: 1.5rem;
+  }
+    .info-window {
+    width: 90%;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.2rem;
+    min-height: 160px;
+  }
+  
+  .skills-item {
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .column--right {
+    grid-template-columns: 1fr;
+    width: 95%;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  
+  .card {
+    padding: 1rem;
+    min-height: 150px;
+  }
+  
+  .card_title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .skills-tech {
+    font-size: 0.85rem;
+  }
+  
+  .skills-bar {
+    height: 6px;
+  }
+  
+  .habilidadesT {
+    margin: 2rem 0 1.5rem 0;
+  }
+  .tittle {
+
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
 }
 </style>
