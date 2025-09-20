@@ -126,8 +126,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '16/8/2025',
       technologiesInvolved: 'HTML',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: 'https://github.com/Bryan9044/Laboratorio2',
+      linkDeploy: 'https://josheria.netlify.app/'
     },
     {
       title: 'Laboratorio 3',
@@ -135,8 +135,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '25/8/2025',
       technologiesInvolved: 'HTML y CSS',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: 'https://github.com/Bryan9044/Laboratorio2',
+      linkDeploy: 'https://josherialab3.netlify.app/'
     },
     {
       title: 'Laboratorio 4',
@@ -153,10 +153,18 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '07/9/2025',
       technologiesInvolved: 'TXT',
+      linkRepo: 'https://github.com/Bryan9044/Laboratorio2/tree/lab5-responsive',
+      linkDeploy: 'https://josheriaresponsive.netlify.app/'
+    },
+    {
+      title: 'Laboratorio 6',
+      description: 'Actividad dinamica',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '19/9/2025',
+      technologiesInvolved: 'js,html',
       linkRepo: '#',
       linkDeploy: '#'
-    },
-    
+    },  
     {
       title: 'Quizz 1',
       description: 'Preguntas de HTML y CSS',
