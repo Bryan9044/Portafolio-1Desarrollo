@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Curso from '@/views/Cursos.vue';
 import SobreMi from '@/views/AboutMe.vue';
+import SeccionPerso from '@/views/SeccionPerso.vue';
 //import Proyectos from '@/views/Proyectos.vue';
 //import Contacto from '@/views/Contacto.vue';
 
@@ -9,6 +10,7 @@ const routes = [
   { path: '/', component: Home },
   { path: '/curso/:id', component: Curso },
   { path: '/sobre-mi', component: SobreMi },
+  { path: '/personal', component: SeccionPerso },
  // { path: '/proyectos', component: Proyectos },
  // { path: '/contacto', component: Contacto },
 ];
