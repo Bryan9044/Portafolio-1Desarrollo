@@ -11,9 +11,29 @@ const curso = cursos.find(c => c.id === route.params.id);
 const filtroTipo = ref('');
 const filtroTecnologia = ref('');
 const filtroFecha = ref('');
+const filtroFechaF = ref('');
+
+
+
+const cambioFecha = (fecha) => {
+  const [dia, mes, año] = fecha.split('/');
+  return new Date(`${año}-${mes}-${dia}`); 
+}
+
+
+const limpiarFiltros = () => {
+  filtroTipo.value = '';
+  filtroTecnologia.value = '';
+  filtroFecha.value = '';
+  filtroFechaF.value = '';
+}
 
 const cursosFiltrados = computed(() => {
   if (!curso) return [];
+
+  const fechaInicioFiltro = filtroFecha.value ? cambioFecha(filtroFecha.value) : null;
+  const fechaFinFiltro = filtroFechaF.value ? cambioFecha(filtroFechaF.value) : null;
+
   return curso.items.filter(item => {
     const coincideTipo =
       !filtroTipo.value || item.typeEvaluation === filtroTipo.value;
@@ -25,11 +45,12 @@ const cursosFiltrados = computed(() => {
     const coincideTecnologia =
       !filtroTecnologia.value ||
       tecnologiasArray.includes(filtroTecnologia.value.toLowerCase());
+    const fechaItem = cambioFecha(item.deliveryDate);
+    let coincideRango = true;
+    if (fechaInicioFiltro && fechaItem < fechaInicioFiltro) coincideRango = false;
+    if (fechaFinFiltro && fechaItem > fechaFinFiltro) coincideRango = false;
 
-    const coincideFecha =
-      !filtroFecha.value || item.deliveryDate.includes(filtroFecha.value);
-
-    return coincideTipo && coincideTecnologia && coincideFecha;
+    return coincideTipo && coincideTecnologia && coincideRango;
   });
 });
 
@@ -81,9 +102,16 @@ const cursoTecDisponibles = curso
       </label>
 
       <label>
-        Fecha (dd/mm/yyyy, mes o año):
-        <input type="text" v-model="filtroFecha" placeholder="Ej: 08/2025 o 2025" />
+        Fecha inicio (dd/mm/yyyy, mes o año):
+        <input type="date" v-model="filtroFecha" placeholder="Ej: 08/2025 o 2025" />
       </label>
+
+      <label>
+        Fecha final (dd/mm/yyyy, mes o año):
+        <input type="date" v-model="filtroFechaF" placeholder="Ej: 08/2025 o 2025" />
+      </label>
+
+      <button @click="limpiarFiltros" class="limpiaF">Limpiar filtros</button>
     </div>
 
     <section class="evaluaciones">
@@ -142,6 +170,7 @@ const cursoTecDisponibles = curso
   gap: 15px;
   margin: 20px 0;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .filtros label {
@@ -286,6 +315,23 @@ const cursoTecDisponibles = curso
 }
 
 
+.limpiaF {
+  margin-top: 24px;
+  padding: 8px 16px;
+  background-color: #c64444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  
+}
+
+.limpiaF:hover {
+  background-color: #f10707;
+  transform: scale(1.05);
+}
 
 
 @keyframes glowPulse {
