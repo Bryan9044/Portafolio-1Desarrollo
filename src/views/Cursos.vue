@@ -103,8 +103,20 @@ const cursoTecDisponibles = curso
             <p class="pr"><strong>Tipo:</strong> {{ item.typeEvaluation }}</p>
             <p class="pr"><strong>Entrega:</strong> {{ item.deliveryDate }}</p>
             <p class="pr"><strong>Tecnologías:</strong> {{ item.technologiesInvolved }}</p>
-            <a :href="item.linkRepo" class="enlaces">Repositorio</a> 
-            <a :href="item.linkDeploy" class="enlaces">Deploy</a>
+            <a 
+            v-if="item.linkRepo && item.linkRepo.trim() !== ''"
+            :href="item.linkRepo" 
+            class="enlaces"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Repositorio</a> 
+            <a 
+            v-if="item.linkDeploy && item.linkDeploy.trim() !== ''"
+            :href="item.linkDeploy" 
+            class="enlaces"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Deploy</a>
           </div>
         </section>
       </div>

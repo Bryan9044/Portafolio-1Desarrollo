@@ -12,8 +12,8 @@ const cursos = [
         typeEvaluation: 'Investigación',
         deliveryDate: '23/9/2025',
         technologiesInvolved: 'SQL Server',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
       },
       {
         title: 'Tarea 1',
@@ -22,7 +22,7 @@ const cursos = [
         deliveryDate: '14/9/2025',
         technologiesInvolved: 'Node.js, Express, SQL Server',
         linkRepo: 'https://github.com/2025-Semestre-2/tarea-1-Bryan9044',
-        linkDeploy: '#'
+        linkDeploy: ''
       },
       {
         title: 'Primer proyecto',
@@ -31,7 +31,7 @@ const cursos = [
         deliveryDate: '12/10/2025',
         technologiesInvolved: 'SQL server, CSS, Vue, .net core',
         linkRepo: 'https://github.com/2025-Semestre-2/proyecto-1-Bryan9044',
-        linkDeploy: '#'
+        linkDeploy: ''
       },
       {
         title: 'Quizz 1',
@@ -40,7 +40,7 @@ const cursos = [
         deliveryDate: '27/08/2025',
         technologiesInvolved: 'SQL server',
         linkRepo: '',
-        linkDeploy: '#'
+        linkDeploy: ''
 
       },
       {
@@ -49,8 +49,8 @@ const cursos = [
         typeEvaluation: 'Quizz',
         deliveryDate: '24/09/2025',
         technologiesInvolved: 'Word',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
 
       },
       {
@@ -59,8 +59,8 @@ const cursos = [
         typeEvaluation: 'Quizz',
         deliveryDate: '15/10/2025',
         technologiesInvolved: 'SQL Server',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
 
       }
     ]
@@ -77,8 +77,8 @@ const cursos = [
         typeEvaluation: 'Examen',
         deliveryDate: '02/10/2025',
         technologiesInvolved: 'Jflex y word',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
       },
       {
         title: 'Tarea 1',
@@ -87,7 +87,7 @@ const cursos = [
         deliveryDate: '12/09/2025',
         technologiesInvolved: 'Bloc de notas',
         linkRepo: 'https://github.com/DylanRodriguez22/Tarea1_Compiladores',
-        linkDeploy: '#'
+        linkDeploy: ''
       },
       {
         title: 'Tarea 2',
@@ -95,8 +95,8 @@ const cursos = [
         typeEvaluation: 'Tarea',
         deliveryDate: '18/09/2025',
         technologiesInvolved: 'Word y MARS',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
       },
       {
         title: 'Proyecto 1',
@@ -105,7 +105,7 @@ const cursos = [
         deliveryDate: '06/10/2025',
         technologiesInvolved: 'word, Jflex, Cup',
         linkRepo: 'https://github.com/Bryan9044/ProyectoCompi-1',
-        linkDeploy: '#'
+        linkDeploy: ''
       },
       {
         title: 'Quizz 1',
@@ -113,8 +113,8 @@ const cursos = [
         typeEvaluation: 'Quizz',
         deliveryDate: '19/08/2025',
         technologiesInvolved: 'Mentimeter',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
       },
       {
         title: 'Quizz 2',
@@ -122,8 +122,8 @@ const cursos = [
         typeEvaluation: 'Quizz',
         deliveryDate: '18/09/2025',
         technologiesInvolved: 'Word',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
       },
       {
         title: 'Quizz 3',
@@ -131,8 +131,8 @@ const cursos = [
         typeEvaluation: 'Quizz',
         deliveryDate: '23/09/2025',
         technologiesInvolved: 'Word',
-        linkRepo: '#',
-        linkDeploy: '#'
+        linkRepo: '',
+        linkDeploy: ''
       },
     ]
   },
@@ -148,7 +148,7 @@ const cursos = [
       typeEvaluation: 'Tarea',
       deliveryDate: '16/10/2025',
       technologiesInvolved: 'Youtube, Canva',
-      linkRepo: '#',
+      linkRepo: '',
       linkDeploy: 'https://www.youtube.com/watch?v=0rGIRR71tMU'
     }
   ]
@@ -165,8 +165,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '10/8/2025',
       technologiesInvolved: 'Netlify',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Laboratorio 2',
@@ -192,8 +192,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '29/8/2025',
       technologiesInvolved: 'TXT',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Laboratorio 5',
@@ -210,8 +210,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '19/9/2025',
       technologiesInvolved: 'js,html',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Laboratorio 7',
@@ -219,8 +219,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '24/9/2025',
       technologiesInvolved: 'Canva',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Laboratorio 8',
@@ -229,7 +229,7 @@ const cursos = [
       deliveryDate: '03/10/2025',
       technologiesInvolved: 'Node.js, Express, Postman',
       linkRepo: 'https://github.com/Bryan9044/Lab8',
-      linkDeploy: '#'
+      linkDeploy: ''
     },  
     {
       title: 'Laboratorio 9',
@@ -237,8 +237,8 @@ const cursos = [
       typeEvaluation: 'Laboratorio',
       deliveryDate: '29/8/2025',
       technologiesInvolved: 'TypeScript, Node.js, Express, GraphQL',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: 'https://github.com/Seraf1n0/API-GraphQL-WEB',
+      linkDeploy: ''
     },
     {
       title: 'Proyecto 1',
@@ -247,7 +247,7 @@ const cursos = [
       deliveryDate: '28/9/2025',
       technologiesInvolved: 'Vue, CSS, JS',
       linkRepo: 'https://github.com/Seraf1n0/BancaWeb',
-      linkDeploy: '#'
+      linkDeploy: ''
     }
 ,
     {
@@ -257,7 +257,7 @@ const cursos = [
       deliveryDate: '19/9/2025',
       technologiesInvolved: 'Vue, CSS, JS',
       linkRepo: 'https://github.com/Bryan9044/Portafolio-1Desarrollo',
-      linkDeploy: '#'
+      linkDeploy: ''
     }
   ]
   },
@@ -273,8 +273,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '21/8/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Investigación 2',
@@ -282,8 +282,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '5/9/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Investigación 3',
@@ -291,8 +291,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '5/9/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Investigación 4',
@@ -300,8 +300,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '19/9/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Investigación 5',
@@ -309,8 +309,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '3/10/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Investigación 6',
@@ -318,8 +318,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '10/10/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
     {
       title: 'Investigación 7',
@@ -327,8 +327,8 @@ const cursos = [
       typeEvaluation: 'Investigación',
       deliveryDate: '20/10/2025',
       technologiesInvolved: 'Word',
-      linkRepo: '#',
-      linkDeploy: '#'
+      linkRepo: '',
+      linkDeploy: ''
     },
  ]
  }

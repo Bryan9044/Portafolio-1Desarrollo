@@ -86,7 +86,7 @@ ul { list-style: none; }
 }
 
 .header {
-  background-color: #4a636c;
+background: linear-gradient(135deg, #888e90 0%, #667eea 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
