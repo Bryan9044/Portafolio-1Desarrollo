@@ -3,6 +3,8 @@ import Home from '@/views/Home.vue';
 import Curso from '@/views/Cursos.vue';
 import SobreMi from '@/views/AboutMe.vue';
 import SeccionPerso from '@/views/SeccionPerso.vue';
+import VivenciasU from '@/views/VivenciasU.vue';
+import MiPensamiento from '@/views/miPensamiento.vue';
 //import Proyectos from '@/views/Proyectos.vue';
 //import Contacto from '@/views/Contacto.vue';
 
@@ -11,6 +13,8 @@ const routes = [
   { path: '/curso/:id', component: Curso },
   { path: '/sobre-mi', component: SobreMi },
   { path: '/personal', component: SeccionPerso },
+  {path: '/vivencias-u', component: VivenciasU },
+  {path: '/miPensamiento', component: MiPensamiento },
  // { path: '/proyectos', component: Proyectos },
  // { path: '/contacto', component: Contacto },
 ];

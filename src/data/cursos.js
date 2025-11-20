@@ -16,6 +16,15 @@ const cursos = [
         linkDeploy: ''
       },
       {
+        title: 'Investigación 2',
+        description: 'Investigar sobre las bases de datos orientadas a objetos',
+        typeEvaluation: 'Tarea',
+        deliveryDate: '05/11/2025',
+        technologiesInvolved: 'Word',
+        linkRepo: '',
+        linkDeploy: ''
+      },
+      {
         title: 'Tarea 1',
         description: 'API REST para la base de Adventure Works',
         typeEvaluation: 'Tarea',
@@ -25,12 +34,30 @@ const cursos = [
         linkDeploy: ''
       },
       {
+        title: 'Tarea 2',
+        description: 'Investigación de los niveles de aislamiento en sql server',
+        typeEvaluation: 'Tarea',
+        deliveryDate: '23/10/2025',
+        technologiesInvolved: 'Word, SQL Server',
+        linkRepo: '',
+        linkDeploy: ''
+      },
+      {
         title: 'Primer proyecto',
         description: 'Hacer modulos de la base WideWorldImporters y con una API mostrarlos en un frontend',
         typeEvaluation: 'Proyecto',
         deliveryDate: '12/10/2025',
         technologiesInvolved: 'SQL server, CSS, Vue, .net core',
         linkRepo: 'https://github.com/2025-Semestre-2/proyecto-1-Bryan9044',
+        linkDeploy: ''
+      },
+      {
+        title: 'Segundo proyecto',
+        description: 'Crear replicación, fragmentación y diseño en productos de la base wideworldimporters',
+        typeEvaluation: 'Proyecto',
+        deliveryDate: '17/11/2025',
+        technologiesInvolved: 'SQL server, Docker, WSL, vue',
+        linkRepo: 'https://github.com/2025-Semestre-2/proyecto-2-dylan-bryant_proyecto2',
         linkDeploy: ''
       },
       {
@@ -62,7 +89,16 @@ const cursos = [
         linkRepo: '',
         linkDeploy: ''
 
-      }
+      },
+      {
+        title: 'Quizz 4',
+        description: 'Continuar con la instalación del datawarehouse y hacer consultas básicas',
+        typeEvaluation: 'Quizz',
+        deliveryDate: '17/11/2025',
+        technologiesInvolved: 'SQL server, visual studio',
+        linkRepo: '',
+        linkDeploy: ''
+      },
     ]
   },
   {
@@ -108,6 +144,51 @@ const cursos = [
         linkDeploy: ''
       },
       {
+        title: 'Proyecto 2',
+        description: 'Crear detección de errores semánticos y generación de código intermedio',
+        typeEvaluation: 'Proyecto',
+        deliveryDate: '10/11/2025',
+        technologiesInvolved: 'word, Jflex, Cup',
+        linkRepo: 'https://github.com/DylanRodriguez22/Proyecto2_Compiladores',
+        linkDeploy: ''
+      },
+      {
+        title: 'Portafolio 1',
+        description: 'Materia vista de la semana 1 a la 4',
+        typeEvaluation: 'Portafolio',
+        deliveryDate: '28/08/2025',
+        technologiesInvolved: 'word',
+        linkRepo: '',
+        linkDeploy: ''
+      },
+      {
+        title: 'Portafolio 2',
+        description: 'Materia vista de la semana 5 a la 8',
+        typeEvaluation: 'Portafolio',
+        deliveryDate: '25/09/2025',
+        technologiesInvolved: 'word',
+        linkRepo: '',
+        linkDeploy: ''
+      },
+      {
+        title: 'Portafolio 3',
+        description: 'Materia vista de la semana 9 a la 12',
+        typeEvaluation: 'Portafolio',
+        deliveryDate: '23/10/2025',
+        technologiesInvolved: 'word',
+        linkRepo: '',
+        linkDeploy: ''
+      },
+      {
+        title: 'Portafolio 4',
+        description: 'Materia vista de la semana 13 a la 16',
+        typeEvaluation: 'Portafolio',
+        deliveryDate: '18/11/2025',
+        technologiesInvolved: 'word',
+        linkRepo: '',
+        linkDeploy: ''
+      },
+      {
         title: 'Quizz 1',
         description: 'Mentimeter sobre temas vistos en clase',
         typeEvaluation: 'Quizz',
@@ -134,6 +215,15 @@ const cursos = [
         linkRepo: '',
         linkDeploy: ''
       },
+      {
+        title: 'Quizz 4',
+        description: 'Preguntas quizzis sobre temas vistos en clase',
+        typeEvaluation: 'Quizz',
+        deliveryDate: '28/10/2025',
+        technologiesInvolved: 'Word',
+        linkRepo: '',
+        linkDeploy: ''
+      },
     ]
   },
   {
@@ -150,6 +240,15 @@ const cursos = [
       technologiesInvolved: 'Youtube, Canva',
       linkRepo: '',
       linkDeploy: 'https://www.youtube.com/watch?v=0rGIRR71tMU'
+    },
+    {
+      title: 'Tarea 2',
+      description: 'Crear autoevaluación con respecto a lo que aportamos en la solución de problemas con Turtle rescue center',
+      typeEvaluation: 'Tarea',
+      deliveryDate: '21/11/2025',
+      technologiesInvolved: 'Word',
+      linkRepo: '',
+      linkDeploy: ''
     }
   ]
   },
@@ -239,6 +338,42 @@ const cursos = [
       technologiesInvolved: 'TypeScript, Node.js, Express, GraphQL',
       linkRepo: 'https://github.com/Seraf1n0/API-GraphQL-WEB',
       linkDeploy: ''
+    },  
+    {
+      title: 'Laboratorio 10',
+      description: 'Componente en React con API integrada',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '24/10/2025',
+      technologiesInvolved: 'react, javascript',
+      linkRepo: 'https://github.com/Bryan9044/Lab10',
+      linkDeploy: ''
+    },  
+    {
+      title: 'Laboratorio 11',
+      description: 'Quizz de preguntas en clase',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '24/10/2025',
+      technologiesInvolved: 'Wayground',
+      linkRepo: '',
+      linkDeploy: ''
+    },
+    {
+      title: 'Laboratorio 12',
+      description: 'Investigación de Ruby on Rails',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '31/10/2025',
+      technologiesInvolved: 'Word, google y youtube',
+      linkRepo: '',
+      linkDeploy: 'https://drive.google.com/file/d/1oSgkjTBxXAHa89l7aWEOfr_4gEKOj5jL/view'
+    },
+    {
+      title: 'Laboratorio 13',
+      description: 'Chatbot con API de una IA',
+      typeEvaluation: 'Laboratorio',
+      deliveryDate: '12/11/2025',
+      technologiesInvolved: 'Typescript, Node.js, OpenRouter',
+      linkRepo: 'https://github.com/Seraf1n0/chatBot-Lab12',
+      linkDeploy: ''
     },
     {
       title: 'Proyecto 1',
@@ -255,6 +390,15 @@ const cursos = [
       description: 'Crear portafolio personal con respecto al curso en un framework moderno',
       typeEvaluation: 'Portafolio',
       deliveryDate: '19/9/2025',
+      technologiesInvolved: 'Vue, CSS, JS',
+      linkRepo: 'https://github.com/Bryan9044/Portafolio-1Desarrollo',
+      linkDeploy: ''
+    },
+    {
+      title: 'Portafolio 2',
+      description: 'Actualizar portafolio personal con respecto al curso',
+      typeEvaluation: 'Portafolio',
+      deliveryDate: '10/10/2025',
       technologiesInvolved: 'Vue, CSS, JS',
       linkRepo: 'https://github.com/Bryan9044/Portafolio-1Desarrollo',
       linkDeploy: ''

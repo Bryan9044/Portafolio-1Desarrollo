@@ -36,6 +36,8 @@ watch(() => route.fullPath, () => {
         <li><RouterLink to="/proyectos">Proyectos</RouterLink></li>
         <li><RouterLink to="/contacto">Contacto</RouterLink></li>
         <li><RouterLink to="/personal">Sección Personal</RouterLink></li>
+        <li><RouterLink to="/vivencias-u">Vivencias U</RouterLink></li>
+        <li><RouterLink to="/miPensamiento">Mi Pensamiento</RouterLink></li>
       </ul>
       <label for="switch-toggle" class="switch">
         <input id="switch-toggle" type="checkbox" class="input">

@@ -3,8 +3,13 @@ import cards3d from '@/components/Cards3dv.vue'
 import gifAnimacion from '@/assets/gif.gif'
 import { ref, onMounted } from 'vue'
 import { supabase } from '@/supabase'
+import { computed } from 'vue'
 
 
+
+const paginaActual = ref(1)
+const cantidadComentariosXPagina = 5
+const totalPaginas = computed(() => Math.ceil(comentarios.value.length / cantidadComentariosXPagina))
 
 const comentarios = ref([])
 const nuevoComentario = ref({
@@ -12,6 +17,12 @@ const nuevoComentario = ref({
     Comentario: ''
 })
 
+
+const paginacionComentarios = computed(() => {
+  const inicio = (paginaActual.value - 1) * cantidadComentariosXPagina
+  const fin = inicio + cantidadComentariosXPagina
+  return comentarios.value.slice(inicio, fin)
+})
 
 
 async function CargaComentarios() {
@@ -86,7 +97,7 @@ onMounted(() => {
         <div class="comments-section">
         <h3>Comentarios recientes</h3>
 
-        <div v-for="(c, i) in comentarios" :key="i" class="comentario-item">
+        <div v-for="(c, i) in paginacionComentarios" :key="i" class="comentario-item">
         <img 
         :src="`https://api.dicebear.com/7.x/avataaars/svg?seed=${c.nombre || i}`" 
         :alt="c.nombre"
@@ -96,6 +107,23 @@ onMounted(() => {
             <p>{{ c.comentario }}</p>
         </div>
     </div>
+<div class="pagination">
+  <button 
+    @click="paginaActual > 1 && (paginaActual--)" 
+    :disabled="paginaActual === 1"
+  >
+    Anterior
+  </button>
+
+  <span>Página {{ paginaActual }} de {{ totalPaginas }}</span>
+
+  <button 
+    @click="paginaActual < totalPaginas && (paginaActual++)" 
+    :disabled="paginaActual === totalPaginas"
+  >
+    Siguiente
+  </button>
+</div>
 
 
 </div>  
@@ -293,6 +321,37 @@ input[type="text"]:hover {
     transform: translateY(0);
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pagination button {
+  padding: 8px 20px;
+  background-color: #595cff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.pagination button:disabled {
+  background-color: #c6f8ff;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.pagination button:not(:disabled):hover {
+  background-color: #030146;
+  transform: translateY(-2px);
+}
 
 @media (max-width: 480px) {
     .container h2 {
